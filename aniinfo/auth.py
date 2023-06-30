@@ -29,10 +29,22 @@ class JWTBearer(HTTPBearer):
 
 def user_dict_if_valid(token: str) -> dict | None:
     try:
-        tok = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
-        if int(tok["expires"]) > int(time.time()):
-            return tok
+        decoded = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+        if int(decoded["expires"]) > int(time.time()):
+            return decoded
     except:
         return None
     return None
         
+
+if __name__ == "__main__":
+    # Test token generator
+    secret_key = input("Paste secret_key:")
+    dt = {
+        "uuid": "29670cf1-9738-4b58-b04b-7c73e829afc4",
+        "type": "service",
+        "name": "test_service",
+        "permissions": ["default", "diff_anime"]
+    }
+    edt = jwt.encode(dt, secret_key, algorithm=settings.JWT_ALGORITHM)
+    print(edt)

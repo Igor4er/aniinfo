@@ -20,7 +20,7 @@ class Settings(BaseSettings):
         "add_exception_handlers": True,
     }
     
-    JWT_ALGORITHM = "HS256"
+    JWT_ALGORITHM = "HS512"
     JWT_SECRET = "SECRET_KEY"
 
     class Config:
@@ -29,4 +29,4 @@ class Settings(BaseSettings):
 
 load_dotenv()
 settings = Settings()
-print(settings)
+# print(settings)
