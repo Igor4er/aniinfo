@@ -37,18 +37,6 @@ test = ["anyio[trio]", "coverage[toml] (>=4.5)", "hypothesis (>=4.0)", "mock (>=
 trio = ["trio (<0.22)"]
 
 [[package]]
-name = "atlastk"
-version = "0.13.2"
-description = "The quick and easy way to add versatile graphical interfaces and networking capabilities to your Python programs. Works even on your Android smartphone or tablet."
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "atlastk-0.13.2-py3-none-any.whl", hash = "sha256:387c3b644a8145e6efd1cf9ff7add9226743571420ce6218cae34ca62ed9c833"},
-    {file = "atlastk-0.13.2.tar.gz", hash = "sha256:1e805658930f2546fbedddd406ff27028f772b2ceb104887cc54ba1ab34ffad8"},
-]
-
-[[package]]
 name = "cffi"
 version = "1.15.1"
 description = "Foreign Function Interface for Python calling C code."
@@ -464,21 +452,6 @@ anyio = ">=3.4.0,<5"
 full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart", "pyyaml"]
 
 [[package]]
-name = "tortoise"
-version = "0.1.1"
-description = "Turtle graphics on the web."
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "tortoise-0.1.1-py3-none-any.whl", hash = "sha256:bcb58a56d6796cad0db330104450df2caf2ea9e98d844bb2906274bd15c12804"},
-    {file = "tortoise-0.1.1.tar.gz", hash = "sha256:a4ebd69b152d266174b3b0f2a22e3fb8995101eb749d3114813a98f405ab10bb"},
-]
-
-[package.dependencies]
-atlastk = "*"
-
-[[package]]
 name = "tortoise-orm"
 version = "0.19.3"
 description = "Easy async ORM for python, built with relations in mind"
@@ -553,4 +526,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "1439aaad6d952503fe4ed87b0cf6e5d5b0649d17041e34b6e7937d39c433b349"
+content-hash = "c5682ebebb68452ba501aeafd7958bf60692795c54f872bc76bcdae6e61ba1a5"
