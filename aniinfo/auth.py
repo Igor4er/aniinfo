@@ -15,11 +15,11 @@ class JWTBearer(HTTPBearer):
         if credentials:
             if not credentials.scheme == "Bearer":
                 raise HTTPException(401, detail="Wrong auth sceme")
-            token = jwt_token_if_valid(credentials.credentials)
-            if token is None:
+            user_dict = user_dict_if_valid(credentials.credentials)
+            if user_dict is None:
                 raise HTTPException(401, detail="Corrupted or expired token")
             try:
-                user = User(**token)
+                user = User(**user_dict)
             except:
                 raise HTTPException(401, detail="Secret key was stolen or developer is idiot")
             return user
@@ -27,7 +27,7 @@ class JWTBearer(HTTPBearer):
             raise HTTPException(401, detail="Invalid token")
 
 
-def jwt_token_if_valid(token: str) -> dict | None:
+def user_dict_if_valid(token: str) -> dict | None:
     try:
         tok = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
         if int(tok["expires"]) > int(time.time()):
