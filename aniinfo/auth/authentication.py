@@ -49,9 +49,9 @@ if __name__ == "__main__":
     secret_key = input("Paste secret_key:")
     dt = {
         "uuid": "29670cf1-9738-4b58-b04b-7c73e829afc4",
-        "type": "user",
+        "type": "service",
         "name": "test_service",
-        "expires": int(time.time()) + 10 * 60,
+        "expires": int(time.time()) + 30 * 60,
         "permissions": ["default", "diff_anime"]
     }
     edt = jwt.encode(dt, secret_key, algorithm=settings.JWT_ALGORITHM)

@@ -1,20 +1,15 @@
 from tortoise import fields, models
-from transliterate import translit
+from aniinfo.services.common import transliterate_from_uk
+from aniinfo.models.genre import Genre
 
 
 class Anime(models.Model):
-    slug = fields.CharField(max_length=255, pk=True)
+    uuid = fields.UUIDField(pk=True)
     title = fields.CharField(max_length=255)
-    year = fields.CharField(max_length=4)
+    year = fields.CharField(max_length=31)
     description = fields.TextField()
     image_url = fields.CharField(max_length=255)
-    director = fields.CharField(max_length=63)
-    studio = fields.CharField(max_length=127)
-    genres = fields.relational.ManyToManyField(model_name="aniinfo.Genre")
+    director = fields.CharField(max_length=63, null=True)
+    studio = fields.CharField(max_length=127, null=True)
+    genres: fields.ManyToManyRelation[Genre] = fields.ManyToManyField("aniinfo.Genre", related_name="animes", through="animes_genres")
     ongoing = fields.BooleanField()
-
-    def __init__(self, **kwargs) -> None:
-        if kwargs.get("pk", False):
-            if "slug" not in kwargs:
-                kwargs["slug"] = translit(self.title, "uk")
-        super().__init__(**kwargs)

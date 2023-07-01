@@ -35,3 +35,5 @@ def service_users_only(func):
             raise HTTPException(403, detail="Only service users allowed")
         return await func(*args, **kwargs)
     return wrapper
+
+# user: Annotated[User, Depends(JWTBearer())]
