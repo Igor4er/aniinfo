@@ -15,7 +15,7 @@ class Settings(BaseSettings):
                 "aniinfo": {"models": ["aniinfo.models"], "default_connection": "default"}
             },
         },
-        "modules": {"models": ["aniinfo.models"]},
+        # "modules": {"models": ["aniinfo.models"]},
         "generate_schemas": True,
         "add_exception_handlers": True,
     }
